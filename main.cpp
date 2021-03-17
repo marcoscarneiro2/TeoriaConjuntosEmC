@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 using namespace std;
 
 
@@ -86,10 +87,24 @@ int Cartesiano(int ConjA[100], int ElemA, int ConjB[100], int ElemB, int ConjC[2
 	int i=0;
 	int j=0;
 	for(int i = 0; i < ElemA; i++)
-	for(int j = 0; j < ElemB; j++)
-  	printf("(%d,%d)\n", ConjA[i], ConjB[j]);
+		for(int j = 0; j < ElemB; j++)
+  		printf("(%d,%d)\n", ConjA[i], ConjB[j]);
 
  		printf("\n\n");			
+}
+
+int ComprimentoA(int ConjA[100], int ElemA, int CompA[100], int ConjB[100], int ElemB){
+		
+		if(ElemA == 0){
+			printf("Conjunto A nao possui elemento\n\n");
+		}else{
+			printf("|A| = (%d)\n\n", ElemA);
+		}
+		if(ElemB == 0){
+			printf("Conjunto B nao possui elemento\n\n");
+		}else{
+			printf("|B| = (%d)\n\n", ElemB);
+		}			
 }
 
 int main(){
@@ -110,6 +125,9 @@ int main(){
     int PCARTESIANO[200];
     int ContC=0;
     
+    int COMPA[100];
+    int CompA=0;
+    
     while(1){
         system("cls");
         cout<<"\n\n Conjuntos \n\n";
@@ -124,7 +142,7 @@ int main(){
         else cout<<"VAZIO";
         cout<<"}\n\n";
 
-        cout<<"   --- MENU --- \n\n";
+        cout<<"   ********* MENU ********* \n\n";
 
         cout<<" 1 - Alterar conjunto A\n";
         cout<<" 2 - Alterar conjunto B\n";
@@ -133,9 +151,8 @@ int main(){
         cout<<" 5 - Diferenca A - B\n";
         cout<<" 6 - Diferenca B - A\n";
         cout<<" 7 - Produto Cartesiano\n";
-        cout<<" 8 - Comprimento de A\n";
-        cout<<" 9 - Comprimento de B\n";
-        cout<<" 10 - Sair\n";
+        cout<<" 8 - Comprimento\n";
+        cout<<" 9 - Sair\n";
         
 
         cout<<"\nOpcao desejada: ";
@@ -192,22 +209,15 @@ int main(){
                 system("cls");
                 cout<<"\n\nCartesiano A-B\n\n";
                 ContC = Cartesiano(A,ContA,B,ContB,PCARTESIANO);
-                cout<<"C = {";
-                Imprime(PCARTESIANO,ContC);
-                cout<<"}\n\n";
                 system("pause");
                 break;
 			case 8://Comprimento de A
                 system("cls");
-                cout<<"\n\nComprimento de A\n\n";
+                cout<<"\n\nComprimento\n\n";
+                CompA = ComprimentoA(A,ContA,COMPA,B,ContB);
                 system("pause");
-                break; 
-			case 9://Comprimento de B
-                system("cls");
-                cout<<"\n\nComprimento de B\n\n";
-                system("pause");
-                break;   	    
-            case 10:
+                break;    	    
+            case 9:
                 cout<<"\nFinalizando...\n\n";
                 system("pause");
                 exit(0);
